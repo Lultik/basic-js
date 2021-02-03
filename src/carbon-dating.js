@@ -1,12 +1,13 @@
-const MODERN_ACTIVITY= 15; 
-const HALF_LIFE_PERIOD= 5730;
+const MODERN_ACTIVITY = 15;
+const HALF_LIFE_PERIOD = 5730;
 
 module.exports = function dateSample(sampleActivity) {
-    let parsedSampleActivity =  parseFloat(sampleActivity)
-    if (typeof sampleActivity === 'string'){
-        if ( (/^\d+(\.?\d*)*$/g).test(sampleActivity) && (0 < parsedSampleActivity && parsedSampleActivity < 15 )){
-            return Math.ceil( Math.log(MODERN_ACTIVITY / parsedSampleActivity) / (0.693 / HALF_LIFE_PERIOD) );
+   let parsedSampleActivity = parseFloat(sampleActivity);
 
-        } else return false
-    } else return false
+   if (typeof sampleActivity !== 'string'
+      || parsedSampleActivity > 15
+      || parsedSampleActivity <= 0
+      || /\D\.?\D/.test(sampleActivity)) return false
+
+   return Math.ceil(Math.log(MODERN_ACTIVITY / parsedSampleActivity) / (0.693 / HALF_LIFE_PERIOD))
 };
