@@ -1,8 +1,6 @@
-const FALL = ['Sep', 'Oct', 'Nov']
-const WINTER = ['Dec', 'Jan', 'Feb']
-const SPRING = ['Mar', 'Apr', 'May']
-const SUMMER = ['Jun', 'Jul', 'Aug']
+const CustomError = require("../extensions/custom-error");
 
-module.exports = function getSeason(date) {
-
+module.exports = function getSeason(/* date */) {
+   throw new CustomError('Not implemented');
+   // remove line with error and write your code here
 };
